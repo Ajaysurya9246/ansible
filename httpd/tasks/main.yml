@@ -1,0 +1,12 @@
+---
+# tasks file for httpd
+- name: Install httpd
+  yum:
+    name: "{{ package_name }}"
+    state: present
+  
+- name: Create index.html
+  template:
+    src: index.html.j2
+    dest: /var/www/html/index.html
+  notify: start httpd
