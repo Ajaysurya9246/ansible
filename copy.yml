@@ -1,0 +1,13 @@
+---
+- hosts: centos
+  remote_user: ansible
+  tasks: 
+    - name: " copying a file" 
+      copy:
+         src: /etc/ansible/ssh.yaml
+         dest: /tmp/secure.yml
+         owner: root
+         group: root
+         mode: '0644'
+  become: true
+

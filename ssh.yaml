@@ -1,0 +1,9 @@
+---
+- hosts: centos
+  remote_user: ansible
+  tasks:
+   - name : "copying a configuration file to the server"
+     copy: 
+      src: /etc/ssh/sshd_config
+      dest: /tmp/
+  become: true

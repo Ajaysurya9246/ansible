@@ -1,0 +1,23 @@
+---
+- hosts: centos
+  become: yes
+  remote_user: ansible
+  tasks:
+   - name : Patching the RHEL based servers
+     ansible.builtin.yum:
+       name: '*'
+       state: latest
+       update_cache: yes
+       
+   - name: Check if reboot required
+     ansible.builtin.command: needs-restarting -r
+     register: reboot_required
+     failed_when: false
+     changed_when: false
+
+
+   - name: Reboot only the above is true
+     ansible.builtin.reboot:
+       reboot_timeout: 300
+     become: yes
+     when: reboot_required.rc != 0

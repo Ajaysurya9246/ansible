@@ -1,0 +1,15 @@
+---
+- hosts: web
+  remote_user: ansible
+  become: yes
+  tasks:
+    - name: Install nginx services
+      ansible.builtin.yum:
+        name: nginx
+        state: present
+
+    - name: start nginx service
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: yes
