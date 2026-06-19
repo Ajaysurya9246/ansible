@@ -1,0 +1,6 @@
+---
+- hosts: centos
+  become: true
+  remote_user: ansible
+  role:
+    - httpd

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ansible Managed Server</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    animation: fadeIn 0.8s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .badge {
+    display: inline-block;
+    background: #28a745;
+    color: white;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    color: #1e3c72;
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    color: #666;
+    margin-bottom: 24px;
+    font-size: 15px;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .info-card {
+    background: #f5f7fa;
+    border-left: 4px solid #2a5298;
+    padding: 12px 16px;
+    border-radius: 6px;
+  }
+
+  .info-card .label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .info-card .value {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1e3c72;
+    margin-top: 4px;
+  }
+
+  .footer {
+    border-top: 1px solid #eee;
+    padding-top: 16px;
+    font-size: 13px;
+    color: #999;
+    text-align: center;
+  }
+
+  .icon {
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">⚙️</div>
+    <span class="badge">● DEPLOYED VIA ANSIBLE</span>
+    <h1>Server Provisioned Successfully</h1>
+    <p class="subtitle">This page was automatically deployed using an Ansible role and Jinja2 templating.</p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">Hostname</div>
+        <div class="value">{{ ansible_hostname }}</div>
+      </div>
+      <div class="info-card">
+        <div class="label">OS Family</div>
+        <div class="value">{{ ansible_distribution }}</div>
+      </div>
+      <div class="info-card">
+        <div class="label">IP Address</div>
+        <div class="value">{{ ansible_default_ipv4.address }}</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Architecture</div>
+        <div class="value">{{ ansible_architecture }}</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      Managed by Ajaysurya | Ansible Role: apache_install
+    </div>
+  </div>
+</body>
+</html>
